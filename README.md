@@ -19,9 +19,9 @@
 - [sqlite3](https://www.sqlite.org)
 - `iputils-ping`, `iproute`, `dnsutils`
 ---
-apt-get -y install iputils-ping
-apt-get -y install iproute
-apt-get -y install dnsutils
+- apt-get -y install iputils-ping
+- apt-get -y install iproute
+- apt-get -y install dnsutils
 ---
 
 ### Installing:
