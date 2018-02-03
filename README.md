@@ -29,3 +29,23 @@ apt-get -y install dnsutils
 
 ### Configure `cluster.cfg`
 - In order for this program to work. You need to configure the `cluster.cfg` to give the right configuration for the server cluster computers. The hostname/ip must match the ip address on your computer. The server computers can share the same IP, but their port number must be different.
+**Example**
+`cluster.cfg`
+```
+numnodes=2
+
+catalog.driver=com.ibm.db2.jcc.DB2Driver
+catalog.hostname=172.17.0.2:50001/mycatdb
+
+node1.driver=com.ibm.db2.jcc.DB2Driver
+node1.hostname=172.17.0.2:50002/mydb1
+
+node2.driver=com.ibm.db2.jcc.DB2Driver
+node2.hostname=172.17.0.2:50003/mydb2
+
+```
+### Configure `ddlfile`
+- This program comes with a `books.sql` file. However, you can use your own `ddlfile` to test with the program, but make sure you need to create a table first.
+
+### Run
+- Since this program using python, you would need to compile and run it with python. In the command line.
