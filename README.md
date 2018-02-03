@@ -73,13 +73,13 @@ python3 ./runDDL.py ./cluster.cfg ./books.sql
 ```
 - On the client, there are two arguments `./cluster.cfg` as cfgfile, and `./books.sql` as ddlfile.
 ### Output
-- **Success:** if all the query executed correctly (no conflicts with database and tables), it will return success. and catalog will say it's updated.
+- **Success** if all the query executed correctly (no conflicts with database and tables), it will return success. and catalog will say it's updated.
 ```
 [172.17.0.2:50002/mydb1]: ./books.sql success.
 [172.17.0.2:50003/mydb2]: ./books.sql success.
 [172.17.0.2:50001/mycatdb]: catalog updated.
 ```
-- **Failed:** if I run it again, using the exact arguments and configuration, the query won't be executed since the `books.sql` can't create the same if one is already existed. Therefore, it will say failed. However, the catalog would still say it's updated.
+- **Failed** if I run it again, using the exact arguments and configuration, the query won't be executed since the `books.sql` can't create the same if one is already existed. Therefore, it will say failed. However, the catalog would still say it's updated.
 ```
 [172.17.0.2:50002/mydb1]: ./books.sql failed.
 [172.17.0.2:50003/mydb2]: ./books.sql failed.
