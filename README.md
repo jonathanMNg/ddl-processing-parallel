@@ -29,6 +29,7 @@ apt-get -y install dnsutils
 
 ### Configure `cluster.cfg`
 - In order for this program to work. You need to configure the `cluster.cfg` to give the right configuration for the server cluster computers. The hostname/ip must match the ip address on your computer. The server computers can share the same IP, but their port number must be different.
+
 **Example**
 `cluster.cfg`
 ```
@@ -47,5 +48,40 @@ node2.hostname=172.17.0.2:50003/mydb2
 ### Configure `ddlfile`
 - This program comes with a `books.sql` file. However, you can use your own `ddlfile` to test with the program, but make sure you need to create a table first.
 
+
+**Example**
+`books.sql`
+```
+CREATE TABLE BOOKS(isbn char(14), title char(80), price
+decimal);
+CREATE TABLE VIDEOS(isbn char(14), title char(80), price
+decimal);
+```
 ### Run
-- Since this program using python, you would need to compile and run it with python. In the command line.
+- Since this program using python, you would need to compile and run it with python. To run this program, you would need at least a server for your `ddlfile`, and a server for the catalog.
+In my example, I use one computer as two servers for `ddlfile`, and one for catalog.
+```
+python3 ./parDBd.py 172.17.0.2 50001 &
+python3 ./parDBd.py 172.17.0.2 50002 &
+python3 ./parDBd.py 172.17.0.2 50003
+```
+- You should notice that there are two arguments that I used for the server machines are `172.17.0.2` as host, and `50001, 50002, 50003` as port.
+
+- On the client machine, type:
+```
+python3 ./runDDL.py ./cluster.cfg ./books.sql
+```
+- On the client, there are two arguments `./cluster.cfg` as cfgfile, and `./books.sql` as ddlfile.
+### Output
+- Success: if all the query executed correctly (no conflicts with database and tables), it will return success. and catalog will say it's updated.
+```
+[172.17.0.2:50002/mydb1]: ./books.sql success.
+[172.17.0.2:50003/mydb2]: ./books.sql success.
+[172.17.0.2:50001/mycatdb]: catalog updated.
+```
+- Failed: if I run it again, using the exact arguments and configuration, the query won't be executed since the `books.sql` can't create the same if one is already existed. Therefore, it will say failed. However, the catalog would still say it's updated.
+```
+[172.17.0.2:50002/mydb1]: ./books.sql failed.
+[172.17.0.2:50003/mydb2]: ./books.sql failed.
+[172.17.0.2:50001/mycatdb]: catalog updated.
+```
