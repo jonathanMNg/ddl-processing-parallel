@@ -85,3 +85,34 @@ python3 ./runDDL.py ./cluster.cfg ./books.sql
 [172.17.0.2:50003/mydb2]: ./books.sql failed.
 [172.17.0.2:50001/mycatdb]: catalog updated.
 ```
+### Does it works?
+- Let take a look at `mydb1, mydb2, and mycatdb`.
+`mydb1`
+```
+root@142129a5d7fa:/app# sqlite3 mydb1
+SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite> .tables
+BOOKS   VIDEOS
+sqlite>
+```
+`mydb2`
+```
+root@142129a5d7fa:/app# sqlite3 mydb2
+SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite> .tables
+BOOKS   VIDEOS
+sqlite>
+```
+`mycatdb`
+```
+root@142129a5d7fa:/app# sqlite3 mycatdb
+SQLite version 3.11.0 2016-02-15 17:29:24
+Enter ".help" for usage hints.
+sqlite> select * from dtables;
+BOOKS|172.17.0.2:50002/mydb1|com.ibm.db2.jcc.DB2Driver||||1|||
+VIDEOS|172.17.0.2:50002/mydb1|com.ibm.db2.jcc.DB2Driver||||1|||
+BOOKS|172.17.0.2:50003/mydb2|com.ibm.db2.jcc.DB2Driver||||2|||
+VIDEOS|172.17.0.2:50003/mydb2|com.ibm.db2.jcc.DB2Driver||||2|||
+```
