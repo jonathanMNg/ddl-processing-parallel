@@ -11,8 +11,18 @@
 - `cluster.cfg`: contains configuration data for the computers in the cluster.  
 - `books.sql`: contains the query that will execute on the server machines.
 
+### Tested Enviroment:
+- Ubuntu
+
 ### Requirements:
-- [python3](http://google.com)
+- [python3](https://www.python.org/download/releases/3.0/)
+- [sqlite3](https://www.sqlite.org)
+- `iputils-ping`, `iproute`, `dnsutils`
+---
+apt-get -y install iputils-ping
+apt-get -y install iproute
+apt-get -y install dnsutils
+---
 
 ### Installing:
 - Clone or download this repository. Then put the `runDDL.py`, `parDBd.py`, `cluster.cfg`, and `books.sql` in the same folder.
