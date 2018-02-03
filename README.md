@@ -10,3 +10,9 @@
 - `parDBd.py`: run on server machines. When executed, this file will create a connection and waits for the input(config data, sql query) from the client side, then it will execute the query based on the configuration. In the end, it will send back data about the query whether it success or fails to execute.
 - `cluster.cfg`: contains configuration data for the computers in the cluster.  
 - `books.sql`: contains the query that will execute on the server machines.
+
+### Requirements:
+- [python3](http://google.com)
+
+### Installing:
+- Clone or download this repository. Then put the `runDDL.py`, `parDBd.py`, `cluster.cfg`, and `books.sql` in the same folder.
