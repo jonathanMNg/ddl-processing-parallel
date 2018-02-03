@@ -18,11 +18,11 @@
 - [python3](https://www.python.org/download/releases/3.0/)
 - [sqlite3](https://www.sqlite.org)
 - `iputils-ping`, `iproute`, `dnsutils`
----
+```
 - apt-get -y install iputils-ping
 - apt-get -y install iproute
 - apt-get -y install dnsutils
----
+```
 
 ### Installing:
 - Clone or download this repository. Then put the `runDDL.py`, `parDBd.py`, `cluster.cfg`, and `books.sql` in the same folder.
