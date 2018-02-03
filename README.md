@@ -6,4 +6,7 @@
 ## How it works?
 
 ### Files included:
-- `runDDL.py`
+- `runDDL.py`: run on client machines. When executed, this file will connect to the cluster machine that has configuration stored in `cluster.cfg` file, then it will send the query to those machines, and also update the catalog database.
+- `parDBd.py`: run on server machines. When executed, this file will create a connection and waits for the input(config data, sql query) from the client side, then it will execute the query based on the configuration. In the end, it will send back data about the query whether it success or fails to execute.
+- `cluster.cfg`: contains configuration data for the computers in the cluster.  
+- `books.sql`: contains the query that will execute on the server machines.
