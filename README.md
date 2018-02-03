@@ -19,10 +19,13 @@
 - [sqlite3](https://www.sqlite.org)
 - `iputils-ping`, `iproute`, `dnsutils`
 ```
-- apt-get -y install iputils-ping
-- apt-get -y install iproute
-- apt-get -y install dnsutils
+apt-get -y install iputils-ping
+apt-get -y install iproute
+apt-get -y install dnsutils
 ```
 
-### Installing:
+### Installation:
 - Clone or download this repository. Then put the `runDDL.py`, `parDBd.py`, `cluster.cfg`, and `books.sql` in the same folder.
+
+### Configure `cluster.cfg`
+- In order for this program to work. You need to configure the `cluster.cfg` to give the right configuration for the server cluster computers. The hostname/ip must match the ip address on your computer. The server computers can share the same IP, but their port number must be different.
